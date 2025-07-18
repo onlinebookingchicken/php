@@ -1,0 +1,36 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Order Received</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>✅ Order Confirmed!</h1>
+    <ul id="orderDetails">
+      <!-- Filled by JavaScript -->
+    </ul>
+  </div>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+
+    const details = [
+      ["Name", params.get("name")],
+      ["Phone", params.get("phone")],
+      ["Item", params.get("item")],
+      ["Quantity", params.get("qty")],
+      ["Address", params.get("address")]
+    ];
+
+    const list = document.getElementById("orderDetails");
+    details.forEach(([label, value]) => {
+      const li = document.createElement("li");
+      li.innerHTML = `<strong>${label}:</strong> ${value}`;
+      list.appendChild(li);
+    });
+  </script>
+</body>
+</html>
